@@ -43,6 +43,8 @@ switchport mode access
 switchport access vlan 90
 exit
 int range f0/15-24
+switchport mode access
+switchport access vlan 88
 switchport voice vlan 88
 exit
 interface gig0/1
