@@ -1,6 +1,6 @@
 enable
 configure terminal
-hostname S1
+hostname S2
 banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS"
 enable secret SenhadaEnable
 ip domain-name peachanddaisy.local
@@ -18,56 +18,56 @@ transport input ssh
 exec-timeout 5
 login local
 exit
-vlan 10
-name TESTES
+vlan 50
+name ANALISTAS
 exit
-vlan 20
-name TELEMARKETING
+vlan 60
+name OPERACAO
 exit
-vlan 30 
-name CONSULTORES
+vlan 70
+name TI
 exit
-vlan 40
-name RH
+vlan 80
+name ADMINISTRATIVO
 exit
-int range f0/1-9
+int range f0/1-20
 switchport mode access
-switchport access vlan 10
+switchport access vlan 50
 exit
-int range f0/10-17
+interface f0/24
 switchport mode access
-switchport access vlan 20
+switchport access vlan 60
 exit
-int range f0/18,f0/22,f0/24
+int range f0/21,f0/23
 switchport mode access
-switchport access vlan 30
+switchport access vlan 70
 exit
-int range f0/19,f0/20,f0/21,f0/23
+interface f0/22
 switchport mode access
-switchport access vlan 40
+switchport access vlan 80
 exit
 interface gig0/1
 switchport mode trunk
-switchport trunk allowed vlan 10,20,30,40
+switchport trunk allowed vlan 50,60,70,80
 switchport trunk native vlan 88
 exit
-interface vlan 10
-ip address 192.168.7.254 255.255.248.0
-description TESTES
+interface vlan 50
+ip address 10.0.127.254 255.255.128.0
+description ANALISTAS
 no shutdown
 exit
-interface vlan 20
-ip address 192.168.11.254 255.255.252.0
-description TELEMARKETING
+interface vlan 60
+ip address 10.0.159.254 255.255.224.0
+description OPERACAO
 no shutdown
 exit
-interface vlan 30
-ip address 192.168.13.254 255.255.254.0
-description CONSULTORES
+interface vlan 70
+ip address 10.0.167.254 255.255.248.0
+description TI
 no shutdown
 exit
-interface vlan 40
-ip address 192.168.14.126 255.255.255.128
-description RH
+interface vlan 80
+ip address 10.0.169.254 255.255.254.0
+description ADMINISTRATIVO
 no shutdown
 do wr

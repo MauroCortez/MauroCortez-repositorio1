@@ -1,6 +1,6 @@
 enable
 configure terminal
-hostname S1
+hostname S4
 banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS"
 enable secret SenhadaEnable
 ip domain-name peachanddaisy.local
@@ -18,56 +18,55 @@ transport input ssh
 exec-timeout 5
 login local
 exit
-vlan 10
-name TESTES
+vlan 88
+name SERVIDORES
 exit
-vlan 20
-name TELEMARKETING
+vlan 200
+name VOZ
 exit
-vlan 30 
-name CONSULTORES
+vlan 90
+name TACACS
 exit
-vlan 40
-name RH
+vlan 88
+name MONITORAMENTO
 exit
 int range f0/1-9
 switchport mode access
-switchport access vlan 10
+switchport access vlan 88
 exit
-int range f0/10-17
+int range f0/10-12
 switchport mode access
-switchport access vlan 20
+switchport access vlan 200
 exit
-int range f0/18,f0/22,f0/24
+int range f0/13-14
 switchport mode access
-switchport access vlan 30
+switchport access vlan 90
 exit
-int range f0/19,f0/20,f0/21,f0/23
-switchport mode access
-switchport access vlan 40
+int range f0/15-24
+switchport voice vlan 88
 exit
 interface gig0/1
 switchport mode trunk
-switchport trunk allowed vlan 10,20,30,40
+switchport trunk allowed vlan 88,90,200
 switchport trunk native vlan 88
 exit
-interface vlan 10
-ip address 192.168.7.254 255.255.248.0
-description TESTES
+interface vlan 88
+ip address 172.27.255.254 255.252.0.0
+description SERVIDORES
 no shutdown
 exit
-interface vlan 20
-ip address 192.168.11.254 255.255.252.0
-description TELEMARKETING
+interface vlan 200
+ip address 172.28.127.254 255.255.128.0
+description VOZ
 no shutdown
 exit
-interface vlan 30
-ip address 192.168.13.254 255.255.254.0
-description CONSULTORES
+interface vlan 90
+ip address 172.28.129.254 255.255.254.0
+description TACACS
 no shutdown
 exit
-interface vlan 40
-ip address 192.168.14.126 255.255.255.128
-description RH
+interface vlan 88
+ip address 172.23.255.254 255.248.0.0
+description MONITORAMENTO
 no shutdown
 do wr
