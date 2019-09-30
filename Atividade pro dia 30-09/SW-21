@@ -1,13 +1,13 @@
 enable
 configure terminal
-hostname SW-11
+hostname SW-21
 banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS!!!"
 enable secret SenhadaEnable
 line console 0
 password SenhadaConsole
 login
 exit
-ip domain-name rede1.local
+ip domain-name rede2.local
 crypto key generate rsa general-keys modulus 1024
 line vty 0 15
 password SenhadaVTY
@@ -35,12 +35,12 @@ switchport mode access
 switchport access vlan 20
 no shutdown
 interface vlan 100
-ip address 172.168.1.141 255.255.255.240
+ip address 172.168.3.29 255.255.255.224
 description VLAN100
 interface g0/1
 switchport mode trunk
 switchport trunk native vlan 99
 switchport trunk allowed vlan 10,20,99,100
 no shutdown
-ip default-gateway 172.16.1.129
+ip default-gateway 172.16.3.1
 do wr

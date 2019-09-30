@@ -1,6 +1,6 @@
 enable
 configure terminal
-hostname SW-11
+hostname SW-12
 banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS!!!"
 enable secret SenhadaEnable
 line console 0
@@ -35,7 +35,7 @@ switchport mode access
 switchport access vlan 20
 no shutdown
 interface vlan 100
-ip address 172.168.1.141 255.255.255.240
+ip address 172.168.1.140 255.255.255.240
 description VLAN100
 interface g0/1
 switchport mode trunk

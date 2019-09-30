@@ -1,0 +1,65 @@
+enable
+configure terminal
+hostname RT-31
+banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS!!!"
+enable secret SenhadaEnable
+line console 0
+password SenhadaConsole
+login
+exit
+ip domain-name rede3.local
+login block-for 240 attempts 7 within 600
+security passwords min-length 8
+crypto key generate rsa general-keys modulus 1024
+line vty 0 15
+password SenhadaVTY
+login local
+transport input ssh
+exec-timeout 9
+exit
+username maurocortez privilege 15 secret maurocortez
+username isabellabento privilege 15 secret isabellabento
+username danieljunior privilege 15 secret danieljunior
+username victorgomes privilege 15 secret victorgomes
+username brunogaldino privilege 15 secret brunogaldino
+service password-encryption
+interface g0/1
+no shutdown
+interface g0/1.10
+encapsulation dot1Q 10
+ip address 172.16.4.129 255.255.255.128
+description VLAN10
+ip helper-address 172.16.4.197
+interface g0/1.20
+encapsulation dot1Q 20
+ip address 172.16.4.1 255.255.255.128
+description VLAN20
+ip helper-address 172.16.7.197
+interface g0/1.100
+encapsulation dot1Q 100
+ip address 172.16.4.193 255.255.255.224
+description VLAN100
+interface serial 0/0/0
+ip address 200.18.189.9 255.255.255.252
+description WAN2 RT-31/11
+no shutdown
+interface serial 0/0/1
+ip address 200.18.189.1 255.255.255.252
+description WAN3 RT-31/21
+no shutdown
+exit
+ip route 172.16.2.0 255.255.255.128 200.18.189.2
+ip route 172.16.2.0 255.255.255.128 200.18.189.10
+ip route 172.16.2.128 255.255.255.128 200.18.189.2
+ip route 172.16.2.128 255.255.255.128 200.18.189.10
+ip route 172.16.3.0 255.255.255.224 200.18.189.2
+ip route 172.16.3.0 255.255.255.224 200.18.189.10
+ip route 172.16.0.0 255.255.255.0 200.18.189.2
+ip route 172.16.0.0 255.255.255.0 200.18.189.10
+ip route 172.16.1.0 255.255.255.128 200.18.189.2
+ip route 172.16.1.0 255.255.255.128 200.18.189.10
+ip route 172.16.1.128 255.255.255.240 200.18.189.2
+ip route 172.16.1.128 255.255.255.240 200.18.189.10
+ip route 200.18.189.4 255.255.255.252 200.18.189.2
+ip route 200.18.189.4 255.255.255.252 200.18.189.10
+do wr
