@@ -1,0 +1,43 @@
+enable
+configure terminal
+hostname SW-02
+vlan 10
+vlan 20
+vlan 30
+vlan 40
+interface fastEthernet 0/1
+switchport mode access
+switchport access vlan 30
+interface fastEthernet 0/2
+switchport mode access
+switchport access vlan 40
+interface gigabitEthernet 0/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,99
+do wr
+
+
+
+===========================================
+
+
+
+enable
+configure terminal
+hostname SW-04
+vlan 10
+vlan 20
+vlan 30
+vlan 40
+interface fastEthernet 0/1
+switchport mode access
+switchport access vlan 20
+interface fastEthernet 0/2
+switchport mode access
+switchport access vlan 10
+interface gigabitEthernet 0/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,99
+do wr
