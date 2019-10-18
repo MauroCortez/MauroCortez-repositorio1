@@ -1,0 +1,144 @@
+LINUX
+--------------------------------------------------
+
+COMANDOS
+
+mv - renomear
+mkdir - criar diretório
+
+
+
+
+
+EXCLUIR UM  PROGRAMA
+
+apt-get purge <programa> - apagar programa
+apt-get autoremove <programa> - limpar tudo q está parado sobre o programa
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------
+
+DENTRO DO VIM
+
+
+i = inserçao (para escrever)
+NO i -
+
+ctrl+n = TAB (completar palavras)
+
+
+v = virtual
+
+--------------------------------------------------
+
+configurar inter. rede
+
+* IR NO VIM - 
+
+vim /etc/network/interfaces
+
+# Interface Host-Only
+auto ens34
+iface ens34 inet static
+address <NUMERO DO IP>
+netmask <NUMERO DA MASCARA>
+gateway <NUMERO DO IP>
+
+
+* LIMPAR AS INTERFACES - 
+
+ip add flush ens33
+ip add flush ens34
+
+
+* DESLIGAR E LIGAR NO MESMO COMANDO - 
+
+ifdown ens33 && ifup ens33
+ifdown ens34 && ifup ens34
+
+
+* DESLIGAR E LIGAR DE UMA VEZ SÓ - 
+
+systemctl restart networking
+
+
+* VER OQ DEU DE ERRADO - 
+
+systemctl status networking
+
+* VER INTERFACES -
+
+ip add
+ifconfig
+
+---------------------------------------------------
+
+BAIXAR COMANDOS - 
+
+apt
+apt-get
+
+COMANDOS PARA BAIXAR - 
+
+tree
+net-tools
+vim
+apache2
+openssh-server
+
+---------------------------------------------------
+
+SITES
+
+a2ensite {site}
+
+systemctl reload apache2 - buscar atualizaçoes nos dados (sempre usar ele)
+systemctl restart apache2 - desligar e ligar o site (usar apenas em ultimo caso)
+
+
+
+----------------------------------------------------
+
+FAZENDO UM SITES
+
+#Instalar o Apache2
+	apt-get update
+	apt-gtet install apache2
+
+#Acessar a pasta sites-available
+	cd /etc/apache2/sites-available/
+
+#Editar o arquivo de configuração padrão
+	cp 000-default.conf <NOME DO MEU SITE>.conf
+	vim <NOME DO MEU SITE>.conf
+
+#Editar os seguintes parâmetros
+	ServerName <NOME DO MEU SITE>
+	Server Admin webmaster@<NOME DO MEU SITE>
+	documentRoot /var/www/<NOME DO MEU SITE>/html/
+
+#Ativar o site
+	a2ensite <NOME DO MEU SITE>
+
+#Efetuar o reload do Apache2
+	systemctl reload apache2
+
+#Criar o diretório do site
+	mkdir -p /var/www/<NOME DO MEU SITE>/html
+
+#Criar o index.html do site
+	vim /var/www/<NOME DO MEU SITE>/html/index.html
+
+
+-----------------------------------------------------
+
+RENOMEAR
+
