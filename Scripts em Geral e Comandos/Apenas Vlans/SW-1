@@ -1,0 +1,23 @@
+enable
+configure terminal
+hostname SW-01
+vlan 2
+name RH
+vlan 3
+name PROF
+inter range fastEthernet 0/1-2
+switchport mode access
+switchport access vlan 2
+description RH
+interface fastEthernet 0/3
+switchport mode access
+switchport access vlan 3
+description PROF
+interface gigabitEthernet 0/1
+switchport mode trunk
+switchport trunk allowed vlan 2,3,8,12
+interface gigabitEthernet 0/2
+switchport mode trunk
+switchport trunk allowed vlan 2,3,8,12
+description TRUNK ROUTER
+do wr
