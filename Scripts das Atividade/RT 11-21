@@ -1,0 +1,111 @@
+RT-11
+
+enable
+configure terminal
+hostname RT-11
+banner motd "APENAS PARA PESSOAS AUTORIZADAS!!"
+enable secret SenhadaEnable
+username maurocortez privilege 15 secret maurocortez
+username lucaspessolato privilege 15 secret lucaspessolato
+username ericksoares privilege 15 secret ericksoares
+username brunogaldino privilege 15 secret brunogaldino
+username matheusferreira privilege 15 secret matheusferreira
+ip domain-name rede1.local
+crypto key generate rsa general-keys modulus 1024
+security passwords min-length 8
+login block-for 240 attempts 7 within 10
+line vty 0 15
+login local
+transport input ssh
+exec-timeout 5
+exit
+line console 0
+password SenhadaConsole
+login
+exit
+service password-encryption
+interface gigabitEthernet 0/1
+no shutdown
+interface gigabitEthernet 0/1.10
+encapsulation dot1q 10
+ip address 172.16.1.1 255.255.255.128
+description GATEWAY - VLAN 10
+ip helper-address 172.16.1.133
+interface gigabitEthernet 0/1.20
+encapsulation dot1q 20
+ip address 172.16.0.1 255.255.255.0
+description GATEWAY - VLAN 20
+ip helper-address 172.16.1.133
+interface gigabitEthernet 0/1.100
+encapsulation dot1q 100
+ip address 172.16.1.129 255.255.255.240
+description GATEWAY - VLAN 100
+ip helper-address 172.16.1.133
+interface serial 0/0/0
+ip address 200.18.189.2 255.255.255.252
+no shutdown
+description RT-21
+ip helper-address 172.16.1.133
+exit
+ip route 172.16.2.0 255.255.254.0 200.18.189.1
+do wr
+
+
+
+====================================================
+RT-21
+
+
+enable
+configure terminal
+hostname RT-21
+banner motd "APENAS PARA PESSOAS AUTORIZADAS!!"
+enable secret SenhadaEnable
+username maurocortez privilege 15 secret maurocortez
+username lucaspessolato privilege 15 secret lucaspessolato
+username ericksoares privilege 15 secret ericksoares
+username brunogaldino privilege 15 secret brunogaldino
+username matheusferreira privilege 15 secret matheusferreira
+ip domain-name rede1.local
+crypto key generate rsa general-keys modulus 1024
+security passwords min-length 8
+login block-for 240 attempts 7 within 10
+line vty 0 15
+login local
+transport input ssh
+exec-timeout 5
+exit
+line console 0
+password SenhadaConsole
+login
+exit
+service password-encryption
+interface gigabitEthernet 0/1
+no shutdown
+interface gigabitEthernet 0/1.10
+encapsulation dot1q 10
+ip address 172.16.2.65 255.255.255.192
+description GATEWAY - VLAN 10
+ip helper-address 172.16.2.165
+interface gigabitEthernet 0/1.20
+encapsulation dot1q 20
+ip address 172.16.2.1 255.255.255.192
+description GATEWAY - VLAN 20
+ip helper-address 172.16.2.165
+interface gigabitEthernet 0/1.30
+encapsulation dot1q 30
+ip address 172.16.2.129 255.255.255.224
+description GATEWAY - VLAN 30
+ip helper-address 172.16.2.165
+interface gigabitEthernet 0/1.100
+encapsulation dot1q 100
+ip address 172.16.2.161 255.255.255.224
+description GATEWAY - VLAN 100
+ip helper-address 172.16.2.165
+interface serial 0/0/0
+ip address 200.18.189.1 255.255.255.252
+no shutdown
+description RT-11
+exit
+ip route 172.16.0.0 255.255.254.0 200.18.189.2
+do wr
