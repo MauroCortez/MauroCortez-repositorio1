@@ -1,0 +1,239 @@
+SWITCHS REDE 2
+
+
+SW-21
+
+enable
+configure terminal
+hostname SW-21
+banner motd "APENAS PARA PESSOAS AUTORIZADAS!!"
+enable secret SenhadaEnable
+username maurocortez privilege 15 secret maurocortez
+username lucaspessolato privilege 15 secret lucaspessolato
+username ericksoares privilege 15 secret ericksoares
+username brunogaldino privilege 15 secret brunogaldino
+username matheusferreira privilege 15 secret matheusferreira
+ip domain-name rede1.local
+crypto key generate rsa general-keys modulus 1024
+line vty 0 15
+login local
+transport input ssh
+exec-timeout 5
+exit
+line console 0
+password SenhadaConsole
+login
+exit
+service password-encryption
+vlan 10
+vlan 20
+vlan 30
+vlan 100
+interface fastEthernet 0/1
+switchport mode access
+switchport access vlan 10
+description PC-21
+interface fastEthernet 0/2
+switchport mode access
+switchport access vlan 20
+description PC-22
+interface fastEthernet 0/3
+switchport mode access
+switchport access vlan 30
+description PC-23
+interface gigabitEthernet 0/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,99,100
+description SW-INTERMEDIARIO-21
+interface gigabitEthernet 0/2
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,99,100
+description SW-22
+interface vlan 100
+ip address 172.16.2.189 255.255.255.224
+description INTERFACE DE GERENCIAMENTO
+exit
+ip default-gateway 172.16.2.161
+do wr
+
+
+=================================================
+
+SW-22
+
+enable
+configure terminal
+hostname SW-22
+banner motd "APENAS PARA PESSOAS AUTORIZADAS!!"
+enable secret SenhadaEnable
+username maurocortez privilege 15 secret maurocortez
+username lucaspessolato privilege 15 secret lucaspessolato
+username ericksoares privilege 15 secret ericksoares
+username brunogaldino privilege 15 secret brunogaldino
+username matheusferreira privilege 15 secret matheusferreira
+ip domain-name rede1.local
+crypto key generate rsa general-keys modulus 1024
+line vty 0 15
+login local
+transport input ssh
+exec-timeout 5
+exit
+line console 0
+password SenhadaConsole
+login
+exit
+service password-encryption
+vlan 10
+vlan 20
+vlan 30
+vlan 100
+interface fastEthernet 0/1
+switchport mode access
+switchport access vlan 10
+description PC-24
+interface fastEthernet 0/2
+switchport mode access
+switchport access vlan 20
+description PC-25
+interface fastEthernet 0/3
+switchport mode access
+switchport access vlan 30
+description PC-26
+interface gigabitEthernet 0/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,99,100
+description SW-INTERMEDIARIO-21
+interface gigabitEthernet 0/2
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,99,100
+description SW-21
+interface vlan 100
+ip address 172.16.2.188 255.255.255.224
+description INTERFACE DE GERENCIAMENTO
+exit
+ip default-gateway 172.16.2.161
+do wr
+
+
+=================================================
+
+SW-23
+
+enable
+configure terminal
+hostname SW-23
+banner motd "APENAS PARA PESSOAS AUTORIZADAS!!"
+enable secret SenhadaEnable
+username maurocortez privilege 15 secret maurocortez
+username lucaspessolato privilege 15 secret lucaspessolato
+username ericksoares privilege 15 secret ericksoares
+username brunogaldino privilege 15 secret brunogaldino
+username matheusferreira privilege 15 secret matheusferreira
+ip domain-name rede1.local
+crypto key generate rsa general-keys modulus 1024
+line vty 0 15
+login local
+transport input ssh
+exec-timeout 5
+exit
+line console 0
+password SenhadaConsole
+login
+exit
+service password-encryption
+vlan 10
+vlan 20
+vlan 30
+vlan 100
+interface fastEthernet 0/1
+switchport mode access
+switchport access vlan 10
+description PC-27
+interface fastEthernet 0/2
+switchport mode access
+switchport access vlan 20
+description PC-28
+interface fastEthernet 0/3
+switchport mode access
+switchport access vlan 30
+description PC-29
+interface gigabitEthernet 0/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,99,100
+description SW-INTERMEDIARIO-22
+interface gigabitEthernet 0/2
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,99,100
+description SW-24
+interface vlan 100
+ip address 172.16.2.187 255.255.255.224
+description INTERFACE DE GERENCIAMENTO
+exit
+ip default-gateway 172.16.2.161
+do wr
+
+
+================================================
+
+SW-24
+
+enable
+configure terminal
+hostname SW-24
+banner motd "APENAS PARA PESSOAS AUTORIZADAS!!"
+enable secret SenhadaEnable
+username maurocortez privilege 15 secret maurocortez
+username lucaspessolato privilege 15 secret lucaspessolato
+username ericksoares privilege 15 secret ericksoares
+username brunogaldino privilege 15 secret brunogaldino
+username matheusferreira privilege 15 secret matheusferreira
+ip domain-name rede1.local
+crypto key generate rsa general-keys modulus 1024
+line vty 0 15
+login local
+transport input ssh
+exec-timeout 5
+exit
+line console 0
+password SenhadaConsole
+login
+exit
+service password-encryption
+vlan 10
+vlan 20
+vlan 30
+vlan 100
+interface fastEthernet 0/1
+switchport mode access
+switchport access vlan 10
+description PC-30
+interface fastEthernet 0/2
+switchport mode access
+switchport access vlan 20
+description PC-31
+interface fastEthernet 0/3
+switchport mode access
+switchport access vlan 30
+description PC-32
+interface gigabitEthernet 0/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,99,100
+description SW-INTERMEDIARIO-22
+interface gigabitEthernet 0/2
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,99,100
+description SW-23
+interface vlan 100
+ip address 172.16.2.186 255.255.255.224
+description INTERFACE DE GERENCIAMENTO
+exit
+ip default-gateway 172.16.2.161
+do wr

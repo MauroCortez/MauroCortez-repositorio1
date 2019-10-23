@@ -1,0 +1,116 @@
+SW-INTERMEDIARIO-21
+
+enable
+configure terminal
+hostname SW-INTERMEDIARIO-21
+banner motd "APENAS PARA PESSOAS AUTORIZADAS!!"
+enable secret SenhadaEnable
+username maurocortez privilege 15 secret maurocortez
+username lucaspessolato privilege 15 secret lucaspessolato
+username ericksoares privilege 15 secret ericksoares
+username brunogaldino privilege 15 secret brunogaldino
+username matheusferreira privilege 15 secret matheusferreira
+ip domain-name rede1.local
+crypto key generate rsa general-keys modulus 1024
+line vty 0 15
+login local
+transport input ssh
+exec-timeout 5
+exit
+line console 0
+password SenhadaConsole
+login
+exit
+service password-encryption
+vlan 10
+vlan 20
+vlan 30
+vlan 100
+interface gigabitEthernet 4/1
+switchport mode access
+switchport access vlan 100
+description SRV-21
+interface gigabitEthernet 0/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,99,100
+description SW-CORE-21
+interface gigabitEthernet 1/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,99,100
+description SW-INTERMEDIARIO-22
+interface gigabitEthernet 2/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,99,100
+description SW-21
+interface gigabitEthernet 3/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,99,100
+description SW-22
+interface vlan 100
+ip address 172.16.2.185 255.255.255.224
+description INTERFACE DE GERENCIAMENTO
+exit
+ip default-gateway 172.16.3.33
+do wr
+
+
+=================================================
+
+SW-INTERMEDIARIO-22
+
+enable
+configure terminal
+hostname SW-INTERMEDIARIO-22
+banner motd "APENAS PARA PESSOAS AUTORIZADAS!!"
+enable secret SenhadaEnable
+username maurocortez privilege 15 secret maurocortez
+username lucaspessolato privilege 15 secret lucaspessolato
+username ericksoares privilege 15 secret ericksoares
+username brunogaldino privilege 15 secret brunogaldino
+username matheusferreira privilege 15 secret matheusferreira
+ip domain-name rede1.local
+crypto key generate rsa general-keys modulus 1024
+line vty 0 15
+login local
+transport input ssh
+exec-timeout 5
+exit
+line console 0
+password SenhadaConsole
+login
+exit
+service password-encryption
+vlan 10
+vlan 20
+vlan 30
+vlan 100
+interface gigabitEthernet 0/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,99,100
+description SW-CORE-21
+interface gigabitEthernet 1/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,99,100
+description SW-INTERMEDIARIO-21
+interface gigabitEthernet 2/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,99,100
+description SW-23
+interface gigabitEthernet 3/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,99,100
+description SW-24
+interface vlan 100
+ip address 172.16.2.184 255.255.255.224
+description INTERFACE DE GERENCIAMENTO
+exit
+ip default-gateway 172.16.2.161
+do wr
