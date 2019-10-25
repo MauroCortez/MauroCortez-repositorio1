@@ -115,7 +115,7 @@ FAZENDO UM SITES
 
 #Instalar o Apache2
 	apt-get update
-	apt-gtet install apache2
+	apt-get install apache2
 
 #Acessar a pasta sites-available
 	cd /etc/apache2/sites-available/
