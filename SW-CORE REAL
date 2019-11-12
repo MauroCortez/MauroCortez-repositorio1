@@ -1,0 +1,96 @@
+SWITCH CORE - REAL
+
+
+enable
+configure terminal
+hostname SW-CORE
+banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS!!!"
+enable secret SenhadaEnable
+username maurocortez privilege 15 secret Maurocortez#00
+username ericksoares privilege 15 secret Ericksoares#00
+username matheusferreira privilege 15 secret Matheusferreira#00
+username brunogaldino privilege 15 secret Brunogaldino#00
+username lucaspessolato privilege 15 secret Lucaspessolato#00
+username kaue privilege 15 secret Senai@123
+username filipe privilege 15 secret Senai@321
+username vinicius privilege 15 secret Senai@456
+username pedro privilege 15 secret Senai@654
+username guilherme privilege 15 secret Senai@789
+username kawanfelix privilege 15 secret Kawan@01
+username rakelpaula privilege 15 secret Rakel@02
+username carlospaulo privilege 15 secret Carlos@03
+username leonardocruz privilege 15 secret Leonardo@04
+username thiago privilege 15 secret Thiago@00
+username danieljesus privilege 15 secret Danieljeus@00
+username matheuslino privilege 15 secret Matheuslino@00
+username isabella privilege 15 secret Isabella@00
+username fabioribeiro privilege 15 secret utopia#01
+username victorsousa privilege 15 secret utopia#02
+username rafaelpicollo privilege 15 secret utopia#03
+username marcospaulo privilege 15 secret utopia#04
+username Iansimim privilege 15 secret A12345678$
+username Melissareis privilege 15 secret B12345678$
+username Renanaraujo privilege 15 secret C12345678$
+username Victorsilva privilege 15 secret D12345678$
+username augusto privilege 15 secret Augusto01#
+username cleiton privilege 15 secret Cleiton01#
+username danieleusebio privilege 15 secret Daniel01#
+username matheus privilege 15 secret Matheus01#
+username yohan privilege 15 secret Yohan011#
+username ruthbraga privilege 15 secret bolo#06
+username kaikyreis privilege 15 secret ted16m12#06
+username jadisson privilege 15 secret meucu#06
+username guilhermecezar privilege 15 secret gatinha#06
+username Leonardomelo privilege 15 secret bolo2#06
+ip domain-name grupo1.local
+crypto key generate rsa general-keys modulus 1024
+line vty 0 15
+login local
+transport input ssh
+exec-timeout 5
+exit
+line console 0
+password SenhadaConsole
+login
+exit
+service password-encryption
+vlan 21
+vlan 22
+vlan 23
+vlan 24
+vlan 25
+vlan 26
+vlan 27
+vlan 28
+vlan 121
+vlan 122
+vlan 123
+vlan 124
+vlan 125
+vlan 126
+vlan 127
+vlan 128
+interface fastEthernet 0/24
+switchport mode access
+switchport access vlan 121
+description SRV-01
+interface fastEthernet 0/23
+switchport mode access
+switchport access vlan 122
+description SRV-01
+interface fastEthernet 0/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 21,22,23,24,99,121,122,123,124
+description SW-GRP-01
+interface fastEthernet 0/2
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 21,22,23,24,99,121,122,123,124
+description SW-GRP-02
+interface vlan 121
+ip address 192.168.254.254 255.255.255.0
+description GERENCIAMENTO DE REDE
+exit
+ip default-gateway 192.168.254.1
+do wr
