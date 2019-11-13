@@ -70,24 +70,86 @@ vlan 125
 vlan 126
 vlan 127
 vlan 128
-interface fastEthernet 0/24
-switchport mode access
-switchport access vlan 121
-description SRV-01
-interface fastEthernet 0/23
-switchport mode access
-switchport access vlan 122
-description SRV-01
 interface fastEthernet 0/1
 switchport mode trunk
 switchport trunk native vlan 99
-switchport trunk allowed vlan 21,22,23,24,99,121,122,123,124
-description SW-GRP-01
+switchport trunk allowed vlan 21,99,121
+description GRP-01
 interface fastEthernet 0/2
 switchport mode trunk
 switchport trunk native vlan 99
-switchport trunk allowed vlan 21,22,23,24,99,121,122,123,124
-description SW-GRP-02
+switchport trunk allowed vlan 22,99,122
+description GRP-02
+interface fastEthernet 0/3
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 23,99,123
+description GRP-03
+interface fastEthernet 0/4
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 24,99,124
+description GRP-04
+interface fastEthernet 0/5
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 25,99,125
+description GRP-05
+interface fastEthernet 0/6
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 26,99,126
+description GRP-06
+interface fastEthernet 0/7
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 27,99,127
+description GRP-07
+interface fastEthernet 0/8
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 28,99,128
+description GRP-08
+interface fastEthernet 0/11
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 21,22,99,121,122
+description RT-01
+interface fastEthernet 0/12
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 23,24,99,123,124
+description RT-02
+interface fastEthernet 0/13
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 25,26,99,125,126
+description RT-03
+interface fastEthernet 0/14
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 27,28,99,127,128
+description RT-04
+interface fastEthernet 0/21
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 21,22,99,121,122
+description SRV-01
+interface fastEthernet 0/22
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 23,24,99,123,124
+description SRV-02
+interface fastEthernet 0/23
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 25,26,99,125,126
+description SRV-03
+interface fastEthernet 0/24
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 27,28,99,127,128
+description SRV-04
 interface vlan 121
 ip address 192.168.254.254 255.255.255.0
 description GERENCIAMENTO DE REDE
