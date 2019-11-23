@@ -21,10 +21,9 @@ password SenhadaConsole
 login
 exit
 service password-encryption
-interface gigabitEthernet 0/1.43
-encapsulation dot1Q 43
+interface gigabitEthernet 0/0
 ip address 192.168.200.1 255.255.255.0
-description REDE - SERVIDORES
+no shutdown
 interface gigabitEthernet 0/1.80
 encapsulation dot1Q 80
 ip address 192.168.32.1 255.255.252.0
