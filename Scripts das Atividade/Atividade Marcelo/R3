@@ -3,6 +3,11 @@ configure terminal
 hostname R3
 banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS"
 enable secret SenhadaEnable
+username maurocortez privilege 15 secret Maurocortez#00
+username ericksoares privilege 15 secret Ericksoares#00
+username matheusferreira privilege 15 secret Matheusferreira#00
+username brunogaldino privilege 15 secret Brunogaldino#00
+username lucaspessolato privilege 15 secret Lucaspessolato#00
 ip domain-name peachanddaisy.local
 crypto key generate rsa general-keys modulus 1024
 line vty 0 15
@@ -11,37 +16,35 @@ login local
 transport input ssh
 exec-timeout 5
 exit
-username maurocortez privilege 15 secret Otirano
-username estagiario privilege 1 secret SenhaEst
 line console 0
 password SenhadaConsole
 login
 exit
 service password-encryption
+interface gigabitEthernet 0/1.43
+encapsulation dot1Q 43
+ip address 192.168.200.1 255.255.255.0
+description REDE - SERVIDORES
 interface gigabitEthernet 0/1.80
 encapsulation dot1Q 80
 ip address 192.168.32.1 255.255.252.0
 description REDE - FINANCAS
-no shutdown
-exit
+ip helper-address 192.168.200.2
 interface gigabitEthernet 0/1.60
 encapsulation dot1Q 60
 ip address 192.168.36.1 255.255.254.0
 description REDE - OPERACOES
-no shutdown
-exit
+ip helper-address 192.168.200.2
 interface gigabitEthernet 0/1.88
 encapsulation dot1Q 88
 ip address 192.168.38.1 255.255.255.0
 description REDE - RELOGIOS
-no shutdown
-exit
+ip helper-address 192.168.200.2
 interface gigabitEthernet 0/1.100
 encapsulation dot1Q 100
 ip address 192.168.39.1 255.255.255.192
 description REDE - LIVRE
-no shutdown
-exit
+ip helper-address 192.168.200.2
 interface gigabitEthernet 0/1
 no shutdown
 exit
