@@ -16,7 +16,6 @@ login local
 transport input ssh
 exec-timeout 5
 exit
-
 line console 0
 password SenhadaConsole
 login
