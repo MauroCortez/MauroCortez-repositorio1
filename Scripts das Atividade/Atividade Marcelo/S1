@@ -3,10 +3,13 @@ configure terminal
 hostname S1
 banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS"
 enable secret SenhadaEnable
+username maurocortez privilege 15 secret Maurocortez#00
+username ericksoares privilege 15 secret Ericksoares#00
+username matheusferreira privilege 15 secret Matheusferreira#00
+username brunogaldino privilege 15 secret Brunogaldino#00
+username lucaspessolato privilege 15 secret Lucaspessolato#00
 ip domain-name peachanddaisy.local
 crypto key generate rsa general-keys modulus 1024
-username maurocortez privilege 15 secret Otirano
-username estagiario privilege 1 secret SenhaEst
 line console 0
 password SenhadaConsole
 login
@@ -20,16 +23,22 @@ login local
 exit
 vlan 10
 name TESTES
-exit
 vlan 20
 name TELEMARKETING
-exit
 vlan 30 
 name CONSULTORES
-exit
 vlan 40
 name RH
-exit
+vlan 43
+name SERVICOS
+vlan 50
+vlan 60
+vlan 70
+vlan 80
+vlan 88
+vlan 90
+vlan 100
+vlan 200
 int range f0/1-9
 switchport mode access
 switchport access vlan 10
@@ -48,26 +57,6 @@ switchport access vlan 40
 exit
 interface gig0/1
 switchport mode trunk
-switchport trunk allowed vlan 10,20,30,40
 switchport trunk native vlan 88
-exit
-interface vlan 10
-ip address 192.168.7.254 255.255.248.0
-description TESTES
-no shutdown
-exit
-interface vlan 20
-ip address 192.168.11.254 255.255.252.0
-description TELEMARKETING
-no shutdown
-exit
-interface vlan 30
-ip address 192.168.13.254 255.255.254.0
-description CONSULTORES
-no shutdown
-exit
-interface vlan 40
-ip address 192.168.14.126 255.255.255.128
-description RH
-no shutdown
+switchport trunk allowed vlan 10,20,30,40,50,60,70,80,88,90,100,200
 do wr
