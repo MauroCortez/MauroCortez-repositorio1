@@ -28,22 +28,22 @@ interface gigabitEthernet 0/1.80
 encapsulation dot1Q 80
 ip address 192.168.32.1 255.255.252.0
 description REDE - FINANCAS
-ip helper-address 192.168.200.2
+ip helper-address 192.168.200.1
 interface gigabitEthernet 0/1.60
 encapsulation dot1Q 60
 ip address 192.168.36.1 255.255.254.0
 description REDE - OPERACOES
-ip helper-address 192.168.200.2
+ip helper-address 192.168.200.1
 interface gigabitEthernet 0/1.88
 encapsulation dot1Q 88
 ip address 192.168.38.1 255.255.255.0
 description REDE - RELOGIOS
-ip helper-address 192.168.200.2
+ip helper-address 192.168.200.1
 interface gigabitEthernet 0/1.100
 encapsulation dot1Q 100
 ip address 192.168.39.1 255.255.255.192
 description REDE - LIVRE
-ip helper-address 192.168.200.2
+ip helper-address 192.168.200.1
 interface gigabitEthernet 0/1
 no shutdown
 exit
