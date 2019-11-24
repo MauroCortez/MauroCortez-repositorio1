@@ -3,10 +3,13 @@ configure terminal
 hostname S2
 banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS"
 enable secret SenhadaEnable
+username maurocortez privilege 15 secret Maurocortez#00
+username ericksoares privilege 15 secret Ericksoares#00
+username matheusferreira privilege 15 secret Matheusferreira#00
+username brunogaldino privilege 15 secret Brunogaldino#00
+username lucaspessolato privilege 15 secret Lucaspessolato#00
 ip domain-name peachanddaisy.local
 crypto key generate rsa general-keys modulus 1024
-username maurocortez privilege 15 secret Otirano
-username estagiario privilege 1 secret SenhaEst
 line console 0
 password SenhadaConsole
 login
@@ -18,6 +21,10 @@ transport input ssh
 exec-timeout 5
 login local
 exit
+vlan 10
+vlan 20
+vlan 30
+vlan 40
 vlan 50
 name ANALISTAS
 exit
@@ -29,6 +36,10 @@ name TI
 exit
 vlan 80
 name ADMINISTRATIVO
+vlan 88
+vlan 90
+vlan 100
+vlan 200
 exit
 int range f0/1-20
 switchport mode access
@@ -48,26 +59,7 @@ switchport access vlan 80
 exit
 interface gig0/1
 switchport mode trunk
-switchport trunk allowed vlan 50,60,70,80
 switchport trunk native vlan 88
+switchport trunk allowed vlan 10,20,30,4050,60,70,80,88,90,100,200
 exit
-interface vlan 50
-ip address 10.0.127.254 255.255.128.0
-description ANALISTAS
-no shutdown
-exit
-interface vlan 60
-ip address 10.0.159.254 255.255.224.0
-description OPERACAO
-no shutdown
-exit
-interface vlan 70
-ip address 10.0.167.254 255.255.248.0
-description TI
-no shutdown
-exit
-interface vlan 80
-ip address 10.0.169.254 255.255.254.0
-description ADMINISTRATIVO
-no shutdown
 do wr
