@@ -48,17 +48,17 @@ interface gigabitEthernet 0/1
 no shutdown
 exit
 interface serial 0/0/1
-ip address 201.187.89.12 255.255.255.252
+ip address 201.187.89.13 255.255.255.252
 description REDE - R3-R4
 no shutdown
 exit
 interface serial 0/1/1
-ip address 201.187.89.20 255.255.255.252
+ip address 201.187.89.22 255.255.255.252
 description REDE - R3-R1
 no shutdown
 exit
 interface serial 0/0/0
-ip address 201.187.89.8 255.255.255.252
+ip address 201.187.89.10 255.255.255.252
 description REDE - R3-R2
 no shutdown
 exit
