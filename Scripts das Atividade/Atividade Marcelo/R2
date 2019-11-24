@@ -3,6 +3,11 @@ configure terminal
 hostname R2
 banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS"
 enable secret SenhadaEnable
+username maurocortez privilege 15 secret Maurocortez#00
+username ericksoares privilege 15 secret Ericksoares#00
+username matheusferreira privilege 15 secret Matheusferreira#00
+username brunogaldino privilege 15 secret Brunogaldino#00
+username lucaspessolato privilege 15 secret Lucaspessolato#00
 ip domain-name peachanddaisy.local
 crypto key generate rsa general-keys modulus 1024
 line vty 0 15
@@ -11,8 +16,6 @@ login local
 transport input ssh
 exec-timeout 5
 exit
-username maurocortez privilege 15 secret Otirano
-username estagiario privilege 1 secret SenhaEst
 line console 0
 password SenhadaConsole
 login
@@ -22,25 +25,25 @@ interface gigabitEthernet 0/1.50
 encapsulation dot1Q 50
 ip address 10.0.0.1 255.255.128.0
 description REDE - ANALISTAS
-no shutdown
+ip helper-address 192.168.200.1
 exit
 interface gigabitEthernet 0/1.60
 encapsulation dot1Q 60
 ip address 10.0.128.1 255.255.224.0
 description REDE - OPERACAO
-no shutdown
+ip helper-address 192.168.200.1
 exit
 interface gigabitEthernet 0/1.70
 encapsulation dot1Q 70
 ip address 10.0.160.1 255.255.248.0
 description REDE - TI
-no shutdown
+ip helper-address 192.168.200.1
 exit
 interface gigabitEthernet 0/1.80
 encapsulation dot1Q 80
 ip address 10.0.168.1 255.255.254.0
 description REDE - ADMINISTRATIVO
-no shutdown
+ip helper-address 192.168.200.1
 exit
 interface gigabitEthernet 0/1
 no shutdown
@@ -78,4 +81,7 @@ ip route 201.187.89.0 255.255.255.252 201.187.89.10
 ip route 201.187.89.12 255.255.255.252 201.187.89.2
 ip route 201.187.89.12 255.255.255.252 201.187.89.5
 ip route 201.187.89.12 255.255.255.252 201.187.89.10
+ip route 192.168.200.0 255.255.255.0 201.187.89.2
+ip route 192.168.200.0 255.255.255.0 201.187.89.5
+ip route 192.168.200.0 255.255.255.0 201.187.89.10
 do wr
