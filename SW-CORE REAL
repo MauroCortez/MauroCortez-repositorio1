@@ -156,3 +156,22 @@ description GERENCIAMENTO DE REDE
 exit
 ip default-gateway 192.168.254.1
 do wr
+
+
+
+=================================================
+
+enable
+configure terminal
+interface fastEthernet 0/21
+no switchport trunk native vlan 99
+interface fastEthernet 0/22
+no switchport trunk native vlan 99
+interface fastEthernet 0/23
+no switchport trunk native vlan 99
+interface fastEthernet 0/24
+no switchport trunk native vlan 99
+interface fastEthernet 0/20
+switchport mode trunk
+switchport trunk allowed vlan 21,22,23,24,25,26,27,28,121,122,123,124,125,126,127,128
+do wr
