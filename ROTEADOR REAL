@@ -35,7 +35,7 @@ interface gigabitEthernet 0/1.21
 encapsulation dot1q 21
 ip address 192.168.21.1 255.255.255.0
 description GATEWAY - VLAN 21
-ip helper-address 192.168.254.5
+ip helper-address 192.168.254.6
 interface gigabitEthernet 0/1.121
 encapsulation dot1q 121
 ip address 192.168.254.1 255.255.255.0
@@ -44,7 +44,7 @@ interface gigabitEthernet 0/1.22
 encapsulation dot1q 22
 ip address 192.168.22.1 255.255.255.0
 description GATEWAY - VLAN 22
-ip helper-address 192.168.254.5
+ip helper-address 192.168.253.6
 interface gigabitEthernet 0/1.122
 encapsulation dot1q 122
 ip address 192.168.253.1 255.255.255.0
