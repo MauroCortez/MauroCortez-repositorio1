@@ -1,0 +1,37 @@
+enable
+conf t
+ip domain-name grupo2.local
+banner motd "Departamento de TI"
+username augusto privilege 15 secret Augusto01#
+username cleiton privilege 15 secret Cleiton01#
+username daniel privilege 15 secret Daniel01#
+username matheus privilege 15 secret Matheus01#
+username yohan privilege 15 secret Yohan011#
+vlan 22
+name grupo2_vlan22
+vlan 122
+name grupo2_vlan122
+line vty 0 15
+login local
+transport input ssh
+exec-timeout 5
+exit
+service password-encryption
+interface f0/24
+switchport mode trunk
+switchport trunk allowed vlan 22,122,99
+switchport trunk native vlan 99
+description Trunk
+exit
+interface f0/4
+switchport mode access
+switchport access vlan 22
+description Access-Vlan22
+exit
+interface f0/2
+switchport mode access
+switchport access vlan 22
+description Access-Vlan 22
+exit
+ip default-gateway 192.168.22.1
+do wr

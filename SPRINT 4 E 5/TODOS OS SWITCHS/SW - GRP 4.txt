@@ -1,0 +1,44 @@
+enable
+configure terminal
+hostname SW-GRP-04
+banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS!!!"
+enable secret SenhadaEnable
+username fabioribeiro privilege 15 secret utopia#01
+username victorsousa privilege 15 secret utopia#02
+username rafaelpicollo privilege 15 secret utopia#03
+username marcospaulo privilege 15 secret utopia#04
+ip domain-name grupo4.local
+crypto key generate rsa general-keys modulus 1024
+line vty 0 15
+login local
+transport input ssh
+exec-timeout 5
+exit
+line console 0
+password SenhadaConsole
+login
+exit
+service password-encryption
+vlan 24
+name VLAN-24
+vlan 124
+name GERENCIAMENTO-DE-REDE
+interface fastEthernet 0/2
+switchport mode access
+switchport access vlan 24
+description vlan-24
+interface fastEthernet 0/4
+switchport mode access
+switchport access vlan 24
+description vlan-24
+interface fastEthernet0/24
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 24,99,124
+description TRUNK-SW-CORE
+interface vlan 124
+ip address 192.168.251.253 255.255.255.0
+description GERENCIAMENTO DE REDE
+exit
+ip default-gateway 192.168.251.1
+do wr

@@ -1,0 +1,46 @@
+enable
+configure terminal
+hostname SW-GRP-03
+banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS!!!"
+enable secret SenhadaEnable
+username thiago privilege 15 secret Thiago@00
+username danieljesus privilege 15 secret Danieljeus@00
+username matheuslino privilege 15 secret Matheuslino@00
+username isabella privilege 15 secret Isabella@00
+ip domain-name grupo3.local
+crypto key generate rsa general-keys modulus 1024
+line vty 0 15
+login local
+transport input ssh
+exec-timeout 5
+exit
+line console 0
+password SenhadaConsole
+login
+exit
+service password-encryption
+vlan 23
+name VLAN-23
+vlan 123
+name GERENCIAMENTO-DE-REDE
+vlan 99
+name nativa
+interface fastEthernet 0/2
+switchport mode access
+switchport access vlan 23
+description vlan-23
+interface fastEthernet 0/4
+switchport mode access
+switchport access vlan 23
+description vlan-23
+interface fastEthernet0/24
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 23,99,123
+description TRUNK-SW-CORE
+interface vlan 123
+ip address 192.168.252.253 255.255.255.0
+description GERENCIAMENTO DE REDE
+exit
+ip default-gateway 192.168.252.1
+do wr
