@@ -1,4 +1,19 @@
-Comandos no CTRL+Windows
+Comandos no Windows+R (Executar)
 
-mstcl - Conexão de Área de Trabalho REMOTO
+mstsc - Conexão de Área de Trabalho REMOTO
 ncpa.cpl - Conexões de Rede
+lusrmgr.msc - Usuários e Grupos
+
+================================================================================
+
+Comandos no CMD
+
+nslookup <NOME DO SITE> - testar o site sem entrar no navegador
+ipconfig - ver o ip
+
+Derivados do ipconfig
+
+ipconfig /all - ver o DNS, endereço MAC e tudo mais da rede
+ipconfig /flushdns - limpar o cache do DNS
+ipconfig /release - desabilitar o IP da placa de rede
+ipconfig /renew - habilitar o IP da placa de rede
