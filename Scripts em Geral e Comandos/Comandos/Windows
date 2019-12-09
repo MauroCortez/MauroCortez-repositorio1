@@ -9,6 +9,9 @@ lusrmgr.msc - Usuários e Grupos
 Comandos no CMD
 
 nslookup <NOME DO SITE> - testar o site sem entrar no navegador
+net stop ftpsvc - parar o serviço ftp
+net start ftpsvc - iniciar o serviço ftp
+
 ipconfig - ver o ip
 
 Derivados do ipconfig
