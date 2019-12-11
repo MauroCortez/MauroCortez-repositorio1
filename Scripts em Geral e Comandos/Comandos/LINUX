@@ -5,8 +5,8 @@ COMANDOS
 
 mv - renomear
 mkdir - criar diretório
-useradd - criar um usuário
-adduser - 
+adduser - criar um usuário com senha
+addgroup - criar grupo
 
 
 
