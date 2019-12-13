@@ -7,22 +7,18 @@ mv - renomear
 mkdir - criar diretório
 adduser - criar um usuário com senha
 addgroup - criar grupo
-gpasswd -a usuario grupo
+gpasswd -a <usuario> <grupo> - colocar um usuario dentro de um grupo
+chmod --- /diretorio - colocar permição na pasta
+chown <usuario> /diretorio - colocar usuario dono da pasta
+chown <grupo> /diretorio - colocar grupo dono da pasta
+chown <usuario>:<grupo> /diretorio - colocar o usuario e grupo como donos da pasta
+passwd <usuario> - colocar ou mudar a senha do usuario escolhido
 
 
-
-EXCLUIR UM  PROGRAMA
+EXCLUIR UM PROGRAMA
 
 apt-get purge <programa> - apagar programa
 apt-get autoremove <programa> - limpar tudo q está parado sobre o programa
-
-
-
-
-
-
-
-
 
 
 --------------------------------------------------
@@ -86,10 +82,13 @@ ifconfig
 
 ---------------------------------------------------
 
-BAIXAR COMANDOS - 
+BAIXAR COMANDOS E PROGRAMAS - 
 
 apt
 apt-get
+apt update
+apt upgrade
+apr dist-upgrade
 
 COMANDOS PARA BAIXAR - 
 
