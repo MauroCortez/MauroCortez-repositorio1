@@ -8,6 +8,7 @@ mkdir - criar diretório
 adduser - criar um usuário com senha
 addgroup - criar grupo
 gpasswd -a <usuario> <grupo> - colocar um usuario dentro de um grupo
+gpasswd -d <usuario> <grupo> - deletar um usuario dentro de um grupo
 chmod --- /diretorio - colocar permição na pasta
 chown <usuario> /diretorio - colocar usuario dono da pasta
 chown <grupo> /diretorio - colocar grupo dono da pasta
