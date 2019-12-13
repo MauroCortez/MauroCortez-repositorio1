@@ -7,7 +7,7 @@ mv - renomear
 mkdir - criar diretório
 adduser - criar um usuário com senha
 addgroup - criar grupo
-
+gpasswd -a usuario grupo
 
 
 
