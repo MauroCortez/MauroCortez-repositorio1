@@ -83,6 +83,10 @@ systemctl status networking
 ip add
 ifconfig
 
+*VER O SERVIDOR DNS -
+
+vim.tiny /etc/resolv.conf
+
 ---------------------------------------------------
 
 BAIXAR COMANDOS E PROGRAMAS - 
