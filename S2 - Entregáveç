@@ -1,0 +1,167 @@
+
+
+
+en
+conf t
+ip ssh version 2
+hostname SW2
+banner motd "
+_____      ___    ___   _____     __     __      ______
+_____     / __|  / _ \ |  _  \   /__\   |  |     ______
+_____     \__ \ |  __/ | | | |  /(__)\  |  |     ______
+_____     |___/  \___| |_| |_| (__)(__) |__|     ______
+
+         ACESSO PROIBIDO PARA PESSOAS NÃO AUTORIZADAS"
+enable secret cisco
+ip domain-name cisco.com
+username cisco privilege 15 secret cisco
+crypto key generate rsa general-keys modulus 1024
+line vty 0 15
+password cisco
+login local
+transport input ssh
+exec-timeout 5
+exit
+line console 0
+password cisco
+login
+exit
+service password-encryption
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+en
+conf t
+vlan 5
+name VLAN5
+vlan 6
+name VLAN6
+vlan 7
+name VLAN7
+vlan 8
+name VLAN8
+vlan 9
+name VLAN9
+vlan 10
+name VLAN10
+vlan 99
+name SEM_USO
+int range fast0/1-2
+switchport mode access
+switchport access vlan 5
+no shut
+int range fast 0/3-4
+switchport mode access
+switchport access vlan 6
+no shut
+int range fast0/5-6
+switchport mode access
+switchport access vlan 7
+no shut
+int range fast0/7-8
+switchport mode access
+switchport access vlan 8
+no shut
+int range fast0/9-10
+switchport mode access
+switchport access vlan 9
+no shut
+int range fast0/11-12
+switchport mode access
+switchport access vlan 10
+no shut
+int range fast 0/13-16
+switchport mode trunk
+switchport trunk allowed vlan 5,6,7,8,9,10,11,12,13,14,15,16,99,900
+switchport trunk native vlan 900
+no shut
+channel-group 1 mode desirable
+int range fast0/17-24
+switchport mode access
+switchport access vlan 99
+shut
+exit
+
+
+
+int range f0/1-12
+switchport mode access
+switchport port-security
+switchport port-security max 2
+switchport port-security violation shutdown
+switchport port-security mac-address sticky
+ 
+int range f0/13-16
+switchport port-security
+switchport port-security max 2
+switchport port-security violation shutdown
+switchport port-security mac-address sticky
+ 
+ 
+ 
+
+
+-----------------------------
+in range f0/13-16
+cdp enable
+
+in range f0/1-12
+no cdp enable
+
+in rang f0/17-24
+no cdp enable
+
+in r g0/1-2
+no cdp enable
+-------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------
+configuracao basica
+
+
+
+
+
+
+
