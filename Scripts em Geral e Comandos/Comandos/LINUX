@@ -1,7 +1,7 @@
 LINUX
---------------------------------------------------
+-----------------------------------------------------
 
-COMANDOS
+# COMANDOS
 
 mv - renomear
 mkdir - criar diretório
@@ -16,38 +16,49 @@ chown <usuario>:<grupo> /diretorio - colocar o usuario e grupo como donos da pas
 passwd <usuario> - colocar ou mudar a senha do usuario escolhido
 cat /diretorio - ver oq tem dentro do diretorio ou arquivo
 hostnamectl set-hostname - mudar o nome da máquina
+df -h = ver a ocupação de espaço cada pasta e o quanto que esta utilizando
+free -m  = ver o espaço livre de armazenamento
+history = ver o historico de comando
+<comando> |more  = serve para mostrar desde o começo, fazendo com q a própria pessoa consiga ver o resto por conta própria
+cat /diretorio |grep <palavra chave> = para pesquisar a palavra dentro de um arquivo
+cat /var/log/auth.log = para ver quem logou via ssh
 
 
-EXCLUIR UM PROGRAMA
+
+
+# EXCLUIR UM PROGRAMA
 
 apt-get purge <programa> - apagar programa
 apt-get autoremove <programa> - limpar tudo q está parado sobre o programa
 
-
---------------------------------------------------
+-----------------------------------------------------
+-----------------------------------------------------
 
 DENTRO DO VIM
 
+yy = copiar a linha interira
+dd = deletar a linha inteira
+y<numero das linhas> + seta para baixo = para copiar a linha q vc está + as linhas debaixo
+
 
 i = inserçao (para escrever)
-NO i -
+# NO i -
 
 ctrl+n = TAB (completar palavras)
 
 
 v = virtual
-NO v -
+# NO v -
 
 y = copiar
 p = colar
-yy = copiar a linha interira
-dd = deletar a linha inteira
 
---------------------------------------------------
+-----------------------------------------------------
+-----------------------------------------------------
 
 CONFIGURAR INTERFACE DE REDE
 
-* IR NO VIM - 
+# IR NO VIM - 
 
 vim /etc/network/interfaces
 
@@ -59,37 +70,49 @@ netmask <NUMERO DA MASCARA>
 gateway <NUMERO DO IP>
 
 
-* LIMPAR AS INTERFACES - 
+# LIMPAR AS INTERFACES - 
 
 ip add flush ens33
 ip add flush ens34
 
 
-* DESLIGAR E LIGAR NO MESMO COMANDO - 
+# DESLIGAR E LIGAR NO MESMO COMANDO - 
 
 ifdown ens33 && ifup ens33
 ifdown ens34 && ifup ens34
 
 
-* DESLIGAR E LIGAR DE UMA VEZ SÓ - 
+# DESLIGAR E LIGAR DE UMA VEZ SÓ - 
 
 systemctl restart networking
 
 
-* VER OQ DEU DE ERRADO - 
+# VER OQ DEU DE ERRADO - 
 
 systemctl status networking
 
-* VER INTERFACES -
+# VER INTERFACES -
 
 ip add
 ifconfig
 
-*VER O SERVIDOR DNS -
+# VER O SERVIDOR DNS -
 
 vim.tiny /etc/resolv.conf
 
----------------------------------------------------
+-----------------------------------------------------
+-----------------------------------------------------
+
+DHCP
+
+
+
+
+
+
+
+-----------------------------------------------------
+-----------------------------------------------------
 
 BAIXAR COMANDOS E PROGRAMAS - 
 
@@ -107,7 +130,8 @@ vim
 apache2
 openssh-server
 
----------------------------------------------------
+-----------------------------------------------------
+-----------------------------------------------------
 
 SITES
 
@@ -116,42 +140,43 @@ a2ensite {site}
 systemctl reload apache2 - buscar atualizaçoes nos dados (sempre usar ele)
 systemctl restart apache2 - desligar e ligar o site (usar apenas em ultimo caso)
 
-
-
-----------------------------------------------------
+-----------------------------------------------------
+-----------------------------------------------------
 
 FAZENDO UM SITES
 
-#Instalar o Apache2
+# Instalar o Apache2
 	apt-get update
 	apt-get install apache2
 
-#Acessar a pasta sites-available
+# Acessar a pasta sites-available
 	cd /etc/apache2/sites-available/
 
-#Editar o arquivo de configuração padrão
+# Editar o arquivo de configuração padrão
 	cp 000-default.conf <NOME DO MEU SITE>.conf
 	vim <NOME DO MEU SITE>.conf
 
-#Editar os seguintes parâmetros
+# Editar os seguintes parâmetros
 	ServerName <NOME DO MEU SITE>
 	Server Admin webmaster@<NOME DO MEU SITE>
 	documentRoot /var/www/<NOME DO MEU SITE>/html/
 
-#Ativar o site
+# Ativar o site
 	a2ensite <NOME DO MEU SITE>
 
-#Efetuar o reload do Apache2
+# Efetuar o reload do Apache2
 	systemctl reload apache2
 
-#Criar o diretório do site
+# Criar o diretório do site
 	mkdir -p /var/www/<NOME DO MEU SITE>/html
 
-#Criar o index.html do site
+# Criar o index.html do site
 	vim /var/www/<NOME DO MEU SITE>/html/index.html
 
-
+-----------------------------------------------------
 -----------------------------------------------------
 
-RENOMEAR
+
+
+
 
