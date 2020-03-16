@@ -143,13 +143,13 @@ apr dist-upgrade
 
 COMANDOS PARA BAIXAR - 
 
-tree
-net-tools
-vim
-apache2
-openssh-server
-isc-dhcp-server
-syslog-ng
+tree = ver arquivos
+net-tools = igual o ip add
+vim = editor de arquivos
+apache2 = sites
+openssh-server = entrar via ssh
+isc-dhcp-server = colocar dhcp no servidor
+syslog-ng = para ver o log(usado tanto no servidor quanto cliente)
 
 -----------------------------------------------------
 -----------------------------------------------------
