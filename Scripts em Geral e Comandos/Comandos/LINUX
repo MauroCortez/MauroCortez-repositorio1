@@ -105,11 +105,30 @@ vim.tiny /etc/resolv.conf
 
 DHCP
 
+# Instalar o ISC-DHCP-SERVER
+	apt-get update
+	apt-get install isc-dhcp-server
 
-
-
-
-
+# Acessar a pasta
+	/etc/default/isc-dhcp-server	
+	
+# Editar os seguintes parâmetros
+	INTERFACESv4="<interface do servidor>"
+	
+# Acessar a pasta
+	/etc/dhcp/dhcpd.conf
+	
+# Editar os seguintes parâmetros
+	option domain-name "meudominio.com";
+	option domain-name-servers 8.8.8.8;
+	
+	subnet <IP DA REDE> netmask <MASCARA DA REDE> {
+		range <IPs> <IPs>;
+		option routers <IP DO ROUTER>;
+	}
+	
+# COLOCAR IP FIXO EM UMA MÁQUINA
+	
 
 -----------------------------------------------------
 -----------------------------------------------------
@@ -129,6 +148,8 @@ net-tools
 vim
 apache2
 openssh-server
+isc-dhcp-server
+syslog-ng
 
 -----------------------------------------------------
 -----------------------------------------------------
@@ -156,7 +177,7 @@ FAZENDO UM SITES
 	cp 000-default.conf <NOME DO MEU SITE>.conf
 	vim <NOME DO MEU SITE>.conf
 
-# Editar os seguintes parâmetros
+
 	ServerName <NOME DO MEU SITE>
 	Server Admin webmaster@<NOME DO MEU SITE>
 	documentRoot /var/www/<NOME DO MEU SITE>/html/
