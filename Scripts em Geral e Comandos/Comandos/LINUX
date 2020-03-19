@@ -150,6 +150,8 @@ apache2 = sites
 openssh-server = entrar via ssh
 isc-dhcp-server = colocar dhcp no servidor
 syslog-ng = para ver o log(usado tanto no servidor quanto cliente)
+bind9 = servidor dns
+dnsutils = nslookup
 
 -----------------------------------------------------
 -----------------------------------------------------
