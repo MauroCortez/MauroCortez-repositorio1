@@ -24,12 +24,16 @@ cat /diretorio |grep <palavra chave> = para pesquisar a palavra dentro de um arq
 cat /var/log/auth.log = para ver quem logou via ssh
 
 
-
-
 # EXCLUIR UM PROGRAMA
 
 apt-get purge <programa> - apagar programa
 apt-get autoremove <programa> - limpar tudo q está parado sobre o programa
+
+
+# REINICIAR UM SERVIÇO
+
+service <programa> restart
+/etc/init.d/<programa> restart
 
 -----------------------------------------------------
 -----------------------------------------------------
@@ -39,7 +43,12 @@ DENTRO DO VIM
 yy = copiar a linha interira
 dd = deletar a linha inteira
 y<numero das linhas> + seta para baixo = para copiar a linha q vc está + as linhas debaixo
-
+:q = sai do vim
+:w = salva o arquivo
+:x = salva e sai do vim
+! = força qualquer comando
+/ = procurar arquivos
+:%s/antes/depois/g = alterar todas as palavras de antes para depois
 
 i = inserçao (para escrever)
 # NO i -
