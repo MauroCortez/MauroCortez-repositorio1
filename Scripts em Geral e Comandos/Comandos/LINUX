@@ -23,6 +23,7 @@ LINUX
 	cat /var/log/auth.log - para ver quem logou via ssh
 	apt show <programa> - verificar detalhes do pacote
 	dpkg -l <programa> - verificar se foi instalado
+	cp <origem> <destino> - copiar e mover arquivos para outro lugar
 
 
 # EXCLUIR UM PROGRAMA
