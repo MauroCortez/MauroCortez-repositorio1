@@ -29,6 +29,7 @@ LINUX
 
 
 # REINICIAR UM SERVIÇO
+	systemctl retart <programa>
 	service <programa> restart
 	/etc/init.d/<programa> restart
 
