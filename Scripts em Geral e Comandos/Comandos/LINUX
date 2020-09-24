@@ -197,7 +197,18 @@ FAZENDO UM SITES
 -----------------------------------------------------
 -----------------------------------------------------
 
+iptables
 
+COMPARTILHANDO A INTERNET
+#!/bin/bash
+echo 1 > /proc/sys/net/ipv4/ip_forward
+iptables -X
+iptables -F
+iptables -t nat -X
+iptables -t nat -F
+iptables -t nat -A POSTROUTING -o ens33 -j MASQUERADE
+iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
 
 
 
