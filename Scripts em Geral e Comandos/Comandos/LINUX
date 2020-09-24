@@ -15,14 +15,14 @@ LINUX
 	passwd <usuario> - colocar ou mudar a senha do usuario escolhido
 	cat /diretorio - ver oq tem dentro do diretorio ou arquivo
 	hostnamectl set-hostname - mudar o nome da máquina
-	df -h = ver a ocupação de espaço cada pasta e o quanto que esta utilizando
-	free -m  = ver o espaço livre de armazenamento
-	history = ver o historico de comando
-	<comando> |more  = serve para mostrar desde o começo, fazendo com q a própria pessoa consiga ver o resto por conta própria
-	cat /diretorio |grep <palavra chave> = para pesquisar a palavra dentro de um arquivo
-	cat /var/log/auth.log = para ver quem logou via ssh
-	apt show <programa> = verificar detalhes do pacote
-	dpkg -l <programa> = verificar se foi instalado
+	df -h - ver a ocupação de espaço cada pasta e o quanto que esta utilizando
+	free -m  - ver o espaço livre de armazenamento
+	history - ver o historico de comando
+	<comando> |more  - serve para mostrar desde o começo, fazendo com q a própria pessoa consiga ver o resto por conta própria
+	cat /diretorio |grep <palavra chave> - para pesquisar a palavra dentro de um arquivo
+	cat /var/log/auth.log - para ver quem logou via ssh
+	apt show <programa> - verificar detalhes do pacote
+	dpkg -l <programa> - verificar se foi instalado
 
 
 # EXCLUIR UM PROGRAMA
