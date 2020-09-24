@@ -21,6 +21,8 @@ LINUX
 	<comando> |more  = serve para mostrar desde o começo, fazendo com q a própria pessoa consiga ver o resto por conta própria
 	cat /diretorio |grep <palavra chave> = para pesquisar a palavra dentro de um arquivo
 	cat /var/log/auth.log = para ver quem logou via ssh
+	apt show <programa> = verificar detalhes do pacote
+	dpkg -l <programa> = verificar se foi instalado
 
 
 # EXCLUIR UM PROGRAMA
