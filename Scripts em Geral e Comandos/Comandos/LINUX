@@ -59,6 +59,17 @@ LINUX
 
 -----------------------------------------------------
 -----------------------------------------------------
+# VIM
+
+# COLOCAR COR E NUMEROS NO VIM
+	
+	# ENTRAR NA PASTA
+		vim /etc/vim/vimrc
+	# DESCOMENTAR E ADICIONAR NA LINHA
+		syntax on
+		set number
+	
+
 
 # DENTRO DO VIM
 	yy = copiar a linha interira
