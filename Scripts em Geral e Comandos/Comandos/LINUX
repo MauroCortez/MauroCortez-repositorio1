@@ -59,7 +59,33 @@ LINUX
 
 -----------------------------------------------------
 -----------------------------------------------------
-# VIM
+RESETAR A SENHA DO ROOT
+
+Iniciando o Linux, aperte "E"
+
+# MODIFICAR A LINHA
+		'linux/root/vmlinuz' e apague as opções "ro" e "quiet splash"
+
+# ADICIONAR NA LINHA
+		rw init=/bin/bash
+
+# APERTE CTRL+X OU F10 PARA ENTRAR NO TERMIAL
+
+# TROCAR A SENHA
+		passwd root
+
+
+-----------------------------------------------------
+-----------------------------------------------------
+MONITORAMENTO DO SERVIDOR 
+
+# ADICIONAR O LOG
+	tail -f -n 1000 /var/log/syslog
+
+
+-----------------------------------------------------
+-----------------------------------------------------
+VIM
 
 # COLOCAR COR E NUMEROS NO VIM
 	
@@ -69,8 +95,7 @@ LINUX
 		syntax on
 		set number
 	
-
-
+	
 # DENTRO DO VIM
 	yy = copiar a linha interira
 	dd = deletar a linha inteira
@@ -222,4 +247,85 @@ iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
 
 
+-----------------------------------------------------
+-----------------------------------------------------
+ZABBIX - MONITORAMENTO
 
+# ATUALIZAR INSTALAR
+	apt update
+	apt install apache2 mysql-server -y
+	apt install php php-mbstring php-gd php-xml php-bcmath php-ldap php-mysql -y
+		
+# ACESSAR O PHP.INI DO APACHE
+	vim /etc/php/7.0/apache2/php.ini
+		
+# MODIFICAR A LINHA 
+	timezone = America/Sao_Paulo
+		
+# ACESSA O PHP.INI DO APACHE
+		vim /etc/php/7.0/cli/php.ini
+		
+# MODIFICAR A LINHA 
+		timezone = America/Sao_Paulo
+
+# BAIXAR ARQUIVO DO ZABBIX
+	wget https://repo.zabbix.com/zabbix/4.0/debian/pool/main/z/zabbix-release/zabbix-release_4.0-3+stretch_all.deb
+
+# INSTALAR O ARQUIVO	
+	dpkg -i zabbix-release_4.0-3+stretch_all.deb
+
+# INSTALAR O ZABBIX AGENT
+	apt update
+	apt install zabbix-agent -y
+
+# REINICIAR O SERVIÇO
+	systemctl enable zabbix-agent.service
+	systemctl start zabbix-agent.service
+
+# INSTALAR ZABBIX MYSQL
+	apt install zabbix-server-mysql zabbix-frontend-php zabbix-get -y
+
+# ENTRAR NO MYSQL
+	mysql -u root -p
+	<SENHA>
+	
+# ADICIONAR OS COMANDOS SEGUINTES
+	CREATE DATABASE zabbixdb character set utf8 collate utf8_bin;
+	CREATE USER	 'zabbix'@'localhost' IDENTIFIED BY 'P@ssw0rd';
+	GRANT ALL PRIVILEGES ON zabbixdb.* TO 'zabbix'@'localhost' WITH GRANT OPTION;
+	FLUSH PRIVILEGES;
+	EXIT
+
+# ENTRAR NOVAMENTE E USAR
+	mysql -u root -p
+	<SENHA>
+	use zabbixdb;
+	EXIT
+
+# DESCOMPACTAR ARQUIVO
+	zcat /usr/share/doc/zabbix-server-mysql/create.sql.gz | mysql -uzabbix -p zabbixdb
+	P@ssw0rd
+	
+# ENTRAR NO ZABBIX.CONF
+	vim /etc/zabbix/zabbix_server.conf
+
+# DESCOMENTAR AS SEGUINTES LINHAS E MODIFICAR
+	DBHost
+	
+	DBName e mudar para zabbixdb
+	
+	DBPassword e colocar P@ssw0rd
+	
+# REINICIAR O SERVIÇO
+	systemctl restart apache2 zabbix-server zabbix-agent
+
+-----------------------------------------------------
+-----------------------------------------------------
+DOCKER
+
+# INSTALAR DOCKER
+	apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common -y
+curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - 
+apt-key fingerprint  0EBFCD88
+add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+apt install docker-ce docker-ce-cli containerd.io -y
