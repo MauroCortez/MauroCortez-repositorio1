@@ -22,8 +22,12 @@ LINUX
 	cat /diretorio |grep <palavra chave> - para pesquisar a palavra dentro de um arquivo
 	cat /var/log/auth.log - para ver quem logou via ssh
 	apt show <programa> - verificar detalhes do pacote
+	dpkg -i <programa> - instalar o programa pego do wget
 	dpkg -l <programa> - verificar se foi instalado
 	cp <origem> <destino> - copiar e mover arquivos para outro lugar
+	apt-key - gerir uma lista de chaves usadas pelo apt para autenticar pacotes
+	wget <site> - baixar arquivos diretamente do site 
+	zcat <arquivo> - descompactar um arquivo
 
 
 # EXCLUIR UM PROGRAMA
@@ -325,7 +329,15 @@ DOCKER
 
 # INSTALAR DOCKER
 	apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common -y
-curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - 
-apt-key fingerprint  0EBFCD88
-add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
-apt install docker-ce docker-ce-cli containerd.io -y
+
+# 
+	curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - 
+
+# LICENCIAR OS PACOTES
+	apt-key fingerprint  0EBFCD88
+
+# 
+	add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+
+# INSTALAR CONTAINERS
+	apt install docker-ce docker-ce-cli containerd.io -y
