@@ -267,10 +267,10 @@ ZABBIX - MONITORAMENTO
 	timezone = America/Sao_Paulo
 		
 # ACESSA O PHP.INI DO APACHE
-		vim /etc/php/7.0/cli/php.ini
+	vim /etc/php/7.0/cli/php.ini
 		
 # MODIFICAR A LINHA 
-		timezone = America/Sao_Paulo
+	timezone = America/Sao_Paulo
 
 # BAIXAR ARQUIVO DO ZABBIX
 	wget https://repo.zabbix.com/zabbix/4.0/debian/pool/main/z/zabbix-release/zabbix-release_4.0-3+stretch_all.deb
@@ -323,6 +323,7 @@ ZABBIX - MONITORAMENTO
 # REINICIAR O SERVIÇO
 	systemctl restart apache2 zabbix-server zabbix-agent
 
+
 -----------------------------------------------------
 -----------------------------------------------------
 DOCKER
@@ -341,3 +342,36 @@ DOCKER
 
 # INSTALAR CONTAINERS
 	apt install docker-ce docker-ce-cli containerd.io -y
+
+
+-----------------------------------------------------
+-----------------------------------------------------
+GRAFANA
+
+# 
+	dpkg -l adduser libfontconfig1
+
+# 
+	wget https://dl.grafana.com/oss/release/grafana_7.1.4_amd64.deb
+
+# 
+	dpkg -i grafana_7.1.4_amd64.deb
+
+# 
+	grafana-cli plugins install alexanderzobnin-zabbix-app
+
+# ENTRAR NO GRAFANA.INI
+	vim /etc/grafana/grafana.ini
+
+
+# descomentar plugins
+
+
+# descomentar allow_loading_unsigned_plugins e adicionar "alexanderzobnin-zabbix-datasource"
+
+# Ativar e Reiniciar serviços
+	systemctl enable grafana-server.service
+	systemctl start grafana-server.service
+
+
+
