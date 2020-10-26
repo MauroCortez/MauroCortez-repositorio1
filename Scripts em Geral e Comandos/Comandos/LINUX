@@ -367,7 +367,7 @@ GRAFANA
 	plugins
 	allow_loading_unsigned_plugins e adicionar "alexanderzobnin-zabbix-datasource"
 
-# Ativar e Reiniciar serviços
+# ATIVAR E REINICIAR SERVIÇOS
 	systemctl enable grafana-server.service
 	systemctl start grafana-server.service
 
